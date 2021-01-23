@@ -6,7 +6,8 @@ import java.awt.event.*;
 import java.awt.Color;
 
 public class slime{ 
-	public static void gui(){ //WIP
+	public static void gui()
+	{ 
 	
 		JFrame f=new JFrame("Slime Chunk Checker");
 		final JTextField tf=new JTextField();  
@@ -29,15 +30,17 @@ public class slime{
 		ans.setBounds(110,225,150,20);
 		
 		JButton b=new JButton("Check");//creating instance of JButton  
+		JButton reset=new JButton("Reset");
 		 
-		b.setBounds(125,175,100, 40);//x axis, y axis, width, height  
+		b.setBounds(100,175,75, 40);//x axis, y axis, width, height  
+		reset.setBounds(180,175,75, 40);//x axis, y axis, width, height  
           
-		f.add(b);f.add(tf);f.add(tf1); f.add(tf2); f.add(ans);
+		f.add(b);f.add(reset);f.add(tf);f.add(tf1); f.add(tf2); f.add(ans);
 		f.add(t1);f.add(t2);f.add(t3);
 		
 		//adding button in JFrame  
           
-		f.setSize(400,500);//400 width and 500 height  
+		f.setSize(400,300);//400 width and 500 height  
 		f.setLayout(null);//using no layout managers  
 		f.setVisible(true);//making the frame visible  
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);   
@@ -46,35 +49,43 @@ public class slime{
 		b.addActionListener(new ActionListener(){  
 			public void actionPerformed(ActionEvent e)
 			{  
-			try{
-				String f=tf.getText();
-				String c=tf1.getText();
-				String d=tf2.getText();
-				long s =Long.parseLong(f);
-				int x =Integer.parseInt(c);
-				int z =Integer.parseInt(d);
-				b.setText("Checking...");  
-				
-				String res = String.valueOf(check(s,x,z));
-				if ( check(s,x,z) == true){
-					ans.setForeground(Color.GREEN);
-				}
-				else{
-					ans.setForeground(Color.RED);
-				}
-				
-				ans.setText("Is a slime chunk:"+" "+res);
-				b.setText("Check");  
+				try{
+					String f=tf.getText();
+					String c=tf1.getText();
+					String d=tf2.getText();
+					long s = Long.parseLong(f);
+					int x = Integer.parseInt(c);
+					int z = Integer.parseInt(d);
+					b.setText("Checking...");  
+					
+					String res = String.valueOf(check(s,x,z));
+					if ( check(s,x,z) == true){
+						ans.setForeground(Color.GREEN);
+					}
+					else{
+						ans.setForeground(Color.RED);
+					}
+					
+					ans.setText("Is a slime chunk:"+" "+res);
+					b.setText("Check");  
 			}
-			catch (Exception g)
-			{
-				String error="OOPSIE WOOPSIE!!\nUwu We make a fucky wucky!! A wittle fucko boingo! \nThe code monkeys at our headquarters are working VEWY HAWD to fix this!";
-				JOptionPane.showMessageDialog(new JFrame(),error,"OOPSIE WOOPSIE",JOptionPane.ERROR_MESSAGE);
+				catch (Exception g)
+				{
+					String error="OOPSIE WOOPSIE!!\nUwu We make a fucky wucky!! A wittle fucko boingo! \nThe code monkeys at our headquarters are working VEWY HAWD to fix this!";
+					JOptionPane.showMessageDialog(new JFrame(),error,"OOPSIE WOOPSIE",JOptionPane.ERROR_MESSAGE);
+					tf1.setText("");
+					tf2.setText("");
+				}
+			}  
+		}); 
+		
+		reset.addActionListener(new ActionListener(){  
+			public void actionPerformed(ActionEvent e)
+			{  
 				tf.setText("");
 				tf1.setText("");
 				tf2.setText("");
 			}
-			}  
 		}); 
 	}
 	
@@ -92,7 +103,7 @@ public class slime{
 				(int) (zPosition * zPosition) * 0x4307a7L +
 				(int) (zPosition * 0x5f24f) ^ 0x3ad8025fL
 			);
-			boolean tf =(rnd.nextInt(10) == 0);
+			boolean tf = (rnd.nextInt(10) == 0);
 			return tf;
 	}
 
