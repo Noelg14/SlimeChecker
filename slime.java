@@ -71,7 +71,7 @@ public class slime{
 			}
 				catch (Exception g)
 				{
-					String error="OOPSIE WOOPSIE!!\nUwu We make a fucky wucky!! A wittle fucko boingo! \nThe code monkeys at our headquarters are working VEWY HAWD to fix this!";
+					String error="An error Occurred";
 					JOptionPane.showMessageDialog(new JFrame(),error,"OOPSIE WOOPSIE",JOptionPane.ERROR_MESSAGE);
 					tf1.setText("");
 					tf2.setText("");
@@ -116,7 +116,7 @@ public class slime{
    
 		catch (Exception e)
 		{
-			String error="OOPSIE WOOPSIE!! Uwu We make a fucky wucky!! A wittle fucko boingo! The code monkeys at our headquarters are working VEWY HAWD to fix this!";
+			String error="An Error Occurred";
 			JOptionPane.showMessageDialog(new JFrame(),error);
 		}
 	}
